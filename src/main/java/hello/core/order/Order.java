@@ -16,7 +16,7 @@ public class Order {
                 "memberId=" + memberId +
                 ", itemName='" + itemName + '\'' +
                 ", itemPrice=" + itemPrice +
-                ", discountPrice=" + discountPrice +
+                ", discountPrice?=" + discountPrice +
                 '}';
     }
 
