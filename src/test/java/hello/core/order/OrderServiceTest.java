@@ -1,11 +1,14 @@
 package hello.core.order;
 
 import hello.core.AppConfig;
+import hello.core.discount.FixDiscountPolicy;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberService;
+import hello.core.member.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
@@ -32,4 +35,19 @@ public class OrderServiceTest {
         //then
         Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
     }
+
+    @Test
+    @DisplayName("필드 주입 테스트")
+    void fieldInjectionTest() {
+        //given
+        OrderServiceImpl orderService = new OrderServiceImpl(new MemoryMemberRepository(), new FixDiscountPolicy());
+        /*nullPointException*/
+
+        //when
+        orderService.createOrder(1L, "itemA", 10000);
+
+        //then
+
+    }
+
 }
