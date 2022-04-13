@@ -3,11 +3,12 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor /* final이 붙은것으로 생성자를 만들어준다. */
+//@RequiredArgsConstructor /* final이 붙은것으로 생성자를 만들어준다. */
 public class OrderServiceImpl implements OrderService {
 
     /*철저하게 인터페이스만 지키고 있다.*/
@@ -22,19 +23,15 @@ public class OrderServiceImpl implements OrderService {
      * 빈을 등록하면서 의존관계 주입도 같이 일어난다.
      * new OrderServiceImpl(memberRepository, discountPolicy)
      * */
-    /*public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }*/
-    /*@Autowired
-    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }*/
 
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
     /*
-    * 수정자는 생성이 완료된 후에 일어난다.
-    * */
+     * 수정자는 생성이 완료된 후에 일어난다.
+     * */
     /*@Autowired
     public void setMemberRepository(MemberRepository memberRepository) {
         System.out.println("memberRepository = " + memberRepository);
@@ -46,7 +43,6 @@ public class OrderServiceImpl implements OrderService {
         System.out.println("discountPolicy = " + discountPolicy);
         this.discountPolicy = discountPolicy;
     }*/
-
 
 
     @Override
