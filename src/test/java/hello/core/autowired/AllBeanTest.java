@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AllBeanTest {
 
     @Test
-    @DisplayName("모든 빈 조회")
+    @DisplayName("모든 빈 조회ㅎ")
     void findAllBean() {
         //given
         ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class, DiscountService.class);
