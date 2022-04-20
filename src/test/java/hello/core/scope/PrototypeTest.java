@@ -36,7 +36,7 @@ public class PrototypeTest {
 
     }
 
-    @Scope("prototype")
+    @Scope(value = "prototype")
     static class PrototypeBean {
         @PostConstruct
         public void init() {
