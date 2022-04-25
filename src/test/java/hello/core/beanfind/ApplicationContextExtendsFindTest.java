@@ -25,7 +25,6 @@ public class ApplicationContextExtendsFindTest {
 //        DiscountPolicy bean = ac.getBean(DiscountPolicy.class);
         assertThrows(NoUniqueBeanDefinitionException.class,
                 () -> ac.getBean(DiscountPolicy.class));
-
     }
 
     @Test
